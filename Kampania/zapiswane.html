@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Записване за MathBoost</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --bordo: #6A1B2A;
+      --gold: #C9A86A;
+      --text-dark: #2B2520;
+      --shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--cream);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border-top: 6px solid var(--gold);
+    }
+
+    h1 {
+      color: var(--bordo);
+      font-size: 32px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    p.subtitle {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: var(--text-dark);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: var(--bordo);
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #d8d2cc;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      background: #fff;
+    }
+
+    input[type="checkbox"] {
+      transform: scale(1.2);
+      margin-right: 10px;
+    }
+
+    .checkbox-area {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    .checkbox-area a {
+      color: var(--bordo);
+      text-decoration: underline;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--bordo);
+      color: white;
+      padding: 16px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: 600;
+    }
+
+    .btn-submit:hover {
+      background: #4d131f;
+    }
+
+    .gdpr-note {
+      font-size: 13px;
+      color: #6b5b4a;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    /* Honeypot */
+    .hidden-field {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 20px;
+        padding: 25px;
+      }
+      h1 { font-size: 26px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Запиши се за MathBoost</h1>
+    <p class="subtitle">Безплатно онлайн събитие за ученици от 5.–7. клас</p>
+
+    <!-- FORM START -->
+    <form action="YOUR_MAILERLITE_FORM_URL" method="post">
+
+      <label for="name">Вашето име</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Имейл адрес</label>
+      <input type="email" id="email" name="email" required>
+
+      <!-- Honeypot -->
+      <div class="hidden-field">
+        <label>Оставете това поле празно</label>
+        <input type="text" name="website">
+      </div>
+
+      <!-- GDPR checkbox -->
+      <div class="checkbox-area">
+	  
+        <input type="checkbox" id="gdpr" required>
+        <label for="gdpr">
+          Съгласен/на съм личните ми данни да бъдат обработвани съгласно 
+          <a href="./poveritelnost.html"" target="_blank">Политиката за поверителност</a>.
+        </label>
+      </div>
+
+      <button type="submit" class="btn-submit">Запиши се</button>
+
+      <p class="gdpr-note">
+        Вашите данни са защитени. Можете да се отпишете по всяко време.
+      </p>
+
+    </form>
+    <!-- FORM END -->
+
+  </div>
+
+</body>
+</html>

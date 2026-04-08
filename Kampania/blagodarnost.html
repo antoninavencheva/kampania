@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Благодарим за регистрацията!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --bordo: #6A1B2A;
+      --gold: #C9A86A;
+      --text-dark: #2B2520;
+      --shadow: 0 10px 25px rgba(0,0,0,0.12);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--cream);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 80px auto;
+      background: white;
+      padding: 50px;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border-top: 6px solid var(--gold);
+      text-align: center;
+    }
+
+    h1 {
+      color: var(--bordo);
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .icon {
+      font-size: 60px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .highlight {
+      font-weight: 600;
+      color: var(--bordo);
+    }
+
+    a.btn {
+      display: inline-block;
+      margin-top: 25px;
+      background: var(--bordo);
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    a.btn:hover {
+      background: #4d131f;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 30px;
+        padding: 30px;
+      }
+      h1 { font-size: 26px; }
+      p { font-size: 16px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="icon">📬</div>
+
+    <h1>Благодарим за регистрацията!</h1>
+
+    <p>Почти сте готови.</p>
+
+    <p>
+      Изпратихме ви имейл за потвърждение.  
+      Моля, отворете пощата си и кликнете върху бутона  
+      <span class="highlight">„Потвърди имейла“</span>, за да завършите регистрацията.
+    </p>
+
+    <p>
+      Ако не виждате имейла:  
+      – проверете папките <span class="highlight">Spam</span> или <span class="highlight">Promotions</span>  
+      – добавете ни към контактите си
+    </p>
+
+    <a href="/" class="btn">Към началната страница</a>
+  </div>
+
+</body>
+</html>

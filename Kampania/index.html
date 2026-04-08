@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8" />
+  <title>3-дневен MathBoost: Първи стъпки към НВО по математика</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bordo: #5a1a1a;
+      --bordo-dark: #3c1010;
+      --gold: #d4a94f;
+      --gold-light: #f7e7c6;
+      --cream: #fdf7ee;
+      --text-dark: #2b2520;
+      --text-muted: #6b5b4a;
+      --white: #ffffff;
+      --shadow-soft: 0 12px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f5f1ea;
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section {
+      padding: 80px 20px;
+    }
+
+    h1, h2, h3 {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 2.1rem;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .section-title {
+      margin-bottom: 24px;
+      position: relative;
+      display: inline-block;
+      color: var(--bordo);
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 999px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--gold);
+      color: var(--bordo-dark);
+      font-weight: 700;
+      border-radius: 999px;
+      font-size: 1.05rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: #e3ba63;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(244, 225, 191, 0.15);
+      border: 1px solid rgba(244, 225, 191, 0.5);
+      color: var(--gold-light);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .bullets {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+      color: var(--gold-light);
+    }
+
+    .bullets li span.icon {
+      margin-top: 3px;
+      font-size: 0.9rem;
+    }
+
+    .bullets-dark li {
+      color: var(--text-dark);
+    }
+
+    .bullets-dark li span.icon {
+      color: var(--gold);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .grid-2-equal {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 24px 22px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card-soft {
+      background: var(--cream);
+      border-radius: 18px;
+      padding: 24px 22px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top left, #7a2626 0, var(--bordo) 45%, var(--bordo-dark) 100%);
+      color: var(--gold-light);
+      padding-top: 90px;
+      padding-bottom: 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.08) 0, transparent 55%),
+                        radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.06) 0, transparent 55%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+	.hero-centered {
+	  display: flex;
+	  justify-content: center;
+	  text-align: center;
+	}
+
+	.hero-content-centered {
+	  max-width: 650px;
+	  margin: 0 auto;
+	}
+
+	.bullets-centered {
+	  display: inline-block;
+	  text-align: left;
+	  margin: 0 auto;
+	}
+
+	/* Снимката под текста */
+	.hero-photo-wrapper-centered {
+	  margin-top: 40px;
+	}
+
+	.hero-photo-frame-centered {
+	  width: 180px;
+	  height: 180px;
+	  margin: 0 auto;
+	  border-radius: 50%;
+	  overflow: hidden;
+	  border: 2px solid rgba(244, 225, 191, 0.9);
+	  box-shadow: var(--shadow-soft);
+	}
+
+	.hero-photo-placeholder-centered {
+	  width: 100%;
+	  height: 100%;
+	  background: linear-gradient(135deg, #f7e7c6, #e3ba63);
+	  display: flex;
+	  align-items: center;
+	  justify-content: center;
+	  color: var(--bordo-dark);
+	  font-weight: 600;
+	  font-size: 0.9rem;
+	}
+
+	/* Текст под снимката */
+	.hero-host {
+	  margin-top: 12px;
+	  font-size: 1rem;
+	  color: var(--gold-light);
+	  font-weight: 600;
+	}
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      margin-bottom: 10px;
+	  max-width: 1200px;
+    }
+
+    .hero-subtitle {
+      font-size: 1.3rem;
+      margin-bottom: 18px;
+      max-width: 1200px;
+    }
+
+    .hero-text {
+      font-size: 1rem;
+      max-width: 1200px;
+      margin-bottom: 16px;
+      color: #fbeed7;
+    }
+
+    .hero-cta {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .hero-note {
+      font-size: 0.9rem;
+      color: #f3ddc0;
+    }
+
+    .hero-photo-wrapper {
+      justify-self: flex-end;
+      align-self: flex-end;
+      max-width: 260px;
+      position: relative;
+    }
+
+    .hero-photo-frame {
+      border-radius: 18px;
+      border: 2px solid rgba(244, 225, 191, 0.9);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-photo-placeholder {
+      width: 100%;
+      height: 260px;
+      background: linear-gradient(135deg, #f7e7c6, #e3ba63);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bordo-dark);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .hero-photo-ornament {
+      position: absolute;
+      inset: -14px -18px auto auto;
+      border-radius: 24px;
+      border: 1px solid rgba(244, 225, 191, 0.4);
+      opacity: 0.6;
+    }
+
+    .section-light {
+      background: var(--cream);
+    }
+
+    .section-white {
+      background: var(--white);
+    }
+
+    .section-soft {
+      background: #f7efe3;
+    }
+
+    .pill-small {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(212, 169, 79, 0.12);
+      color: var(--bordo);
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+    }
+
+    .profile-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--bordo);
+      margin-bottom: 4px;
+    }
+
+    .program-day {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .program-day-title {
+      font-weight: 700;
+      color: var(--bordo);
+    }
+
+    .bonus-card {
+      border-radius: 18px;
+      border: 2px solid rgba(212, 169, 79, 0.7);
+      background: linear-gradient(135deg, #fdf7ee, #f7e7c6);
+      padding: 24px 22px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .bonus-icon {
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+
+    .bonus-title {
+      font-weight: 700;
+      color: var(--bordo);
+      font-size: 1.1rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 20px 18px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .testimonial-photo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ddd;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .testimonial-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--bordo);
+    }
+
+    .testimonial-role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .testimonial-quote {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .faq-item {
+      border-radius: 14px;
+      background: var(--white);
+      padding: 16px 18px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: var(--bordo);
+      margin-bottom: 6px;
+    }
+
+    .faq-a {
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .cta-final {
+      text-align: center;
+      color: var(--gold-light);
+    }
+
+    .cta-final p {
+      margin-bottom: 10px;
+    }
+
+    .cta-final h2 {
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    .cta-final-note {
+      font-size: 0.95rem;
+      color: #f3ddc0;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 960px) {
+      .grid-2,
+      .grid-3,
+      .grid-2-equal,
+      .testimonials-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+	
+      .hero-title {
+        font-size: 2.2rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1.15rem;
+      }
+
+      section {
+        padding: 60px 18px;
+      }
+
+      .hero {
+        padding: 70px 18px;
+      }
+
+      .hero-photo-wrapper {
+        max-width: 220px;
+        margin-top: 30px;
+        justify-self: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.1rem;
+      }
+
+      h2 {
+        font-size: 1.7rem;
+      }
+
+      .btn-primary {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-cta {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HERO -->
+
+	<section class="hero">
+  <div class="hero-inner hero-centered">
+
+    <div class="hero-content-centered">
+      <div class="pill">Безплатно онлайн събитие за бъдещите седмокласници</div>
+
+      <h1 class="hero-title">3-дневен MathBoost:<br> Първи стъпки към НВО по математика</h1>
+
+      <p class="hero-subtitle">Дай на детето си уверен старт към НВО само за 3 дни.</p>
+
+      <p class="hero-text">
+        Безплатно онлайн събитие за бъдещите седмокласници, което показва най-важните теми,
+        ключови техники и първите стъпки към стабилна подготовка за НВО.
+      </p>
+
+      <ul class="bullets bullets-centered">
+        <li><span class="icon">✔</span><span>Ученикът разбира кои са основните теми за НВО</span></li>
+        <li><span class="icon">✔</span><span>Първи техники за решаване на задачи</span></li>
+        <li><span class="icon">✔</span><span>По-малко страх, повече увереност</span></li>
+        <li><span class="icon">✔</span><span>Първи реални стъпки към повишаване на успеха по математика</span></li>
+      </ul>
+		<a href="./zapiswane.html">
+      <button class="btn-primary hero-btn">Запиши се безплатно</button>
+
+      <div class="hero-photo-wrapper-centered">
+        <div class="hero-photo-frame-centered">
+          <div class="hero-photo-placeholder-centered">
+            <img src="./DSCF6601.jpg" >
+          </div>
+        </div>
+        <p class="hero-host">Водещ: Антонина Венчева</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+      
+
+    <!-- СЕКЦИЯ 2: Какво ще постигне детето -->
+    <section class="section-light">
+      <div class="grid-2">
+        <div>
+          <h2 class="section-title">Какво ще постигне ученикът сам за 3 дни</h2>
+          <p>
+            Три дни, които дават уверен старт към подготовката за НВО — без напрежение и без излишна теория.
+          </p>
+        </div>
+        <div>
+          <ul class="bullets bullets-dark">
+            <li><span class="icon">✔</span><span>Разбира кои са най-важните теми за НВО</span></li>
+            <li><span class="icon">✔</span><span>Учи първите ключови техники за решаване</span></li>
+            <li><span class="icon">✔</span><span>Вижда логиката зад задачите, а не само решенията</span></li>
+            <li><span class="icon">✔</span><span>Намалява страха и напрежението от изпита</span></li>
+            <li><span class="icon">✔</span><span>Получава ясна структура за самоподготовка</span></li>
+            <li><span class="icon">✔</span><span>Родителят разбира как да подкрепи детето</span></li>
+            <li><span class="icon">✔</span><span>Поставя основите за по-висок успех в училище и на НВО</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 3: За кого е подходящо -->
+    <section class="section-white">
+      <h2 class="section-title">За кого е подходящ 3-дневният MathBoost</h2>
+      <div class="grid-3" style="margin-top: 32px;">
+        <div class="card-soft">
+         
+          <h3>Ученици - бъдещи седмокласници, които искат уверен старт</h3>
+          <p class="muted">
+            Ученици, които имат нужда от ясна структура, първи техники и спокойствие преди да започнат
+            сериозната подготовка за НВО.
+          </p>
+        </div>
+        <div class="card-soft">
+          
+          <h3>Ученици, които се притесняват от НВО или губят увереност</h3>
+          <p class="muted">
+            Подходящо за ученици, които се объркват в задачите, бъркат логиката или се стресират от изпитния формат.
+          </p>
+        </div>
+        <div class="card-soft">
+          
+          <h3>Ученици, които са опитвали да учат, но не са се справили</h3>
+          <p class="muted">
+            Ученици, които са пробвали сами или с помощ, но все още „не им се получава“ — тук получават нов подход,
+            разбираема логика и първи успехи, които връщат увереността.
+          </p>
+        </div>
+      </div>
+
+      <div class="card-soft" style="margin-top: 32px;">
+        <div class="pill-small">За родителите</div>
+        <h3>Родители, които искат да знаят как да подкрепят детето си</h3>
+        <p class="muted">
+          Подходящо за родители, които търсят професионално насочване, яснота и реалистичен план за подготовка —
+          без излишно напрежение и хаос.
+        </p>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 4: Програма -->
+    <section class="section-soft">
+      <h2 class="section-title">Какво включват трите дни</h2>
+      <div class="grid-3" style="margin-top: 32px;">
+        <div class="card">
+          <div class="tag">Ден 1</div>
+          <div class="program-day">
+            <div class="program-day-title">Основните теми за НВО</div>
+            <p class="muted">Най-важните области и какво се повтаря всяка година.</p>
+            <p class="muted">Как да започнем подготовката правилно, без да се претоварваме.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="tag">Ден 2</div>
+          <div class="program-day">
+            <div class="program-day-title">Първи техники за решаване</div>
+            <p class="muted">Логика зад задачите, а не просто механично решаване.</p>
+            <p class="muted">Чести грешки и как да ги избегнем, с практични примери.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="tag">Ден 3</div>
+          <div class="program-day">
+            <div class="program-day-title">План за подготовка + увереност</div>
+            <p class="muted">Как да учим ефективно и как родителят може да помага.</p>
+            <p class="muted">Как тези стъпки водят до по-висок успех в училище и на НВО.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 5: Бонуси -->
+    <section class="section-white">
+      <h2 class="section-title">Бонуси (въпреки че събитието е безплатно)</h2>
+      <div class="grid-2-equal" style="margin-top: 32px;">
+        <div class="bonus-card">
+          <div class="bonus-icon">📘</div>
+          <div class="bonus-title">Мини наръчник „НВО 2026“ (PDF)</div>
+          <p class="muted">
+            Кратко, ясно и практично ръководство, което събира най-важното за НВО по математика:
+            основните теми, типичните задачи, често срещаните грешки и какво да очакват родителите и учениците.
+          </p>
+          <p class="muted">
+            Материал, който дава яснота и спокойствие — може да се връщате към него по всяко време.
+          </p>
+        </div>
+        <div class="bonus-card">
+          <div class="bonus-icon">🎥</div>
+          <div class="bonus-title">Видео разбор на НВО задача</div>
+          <p class="muted">
+            Кратко обучително видео, което показва логиката на решаване, а не просто стъпките.
+            Децата виждат как да мислят, как да подхождат към задачата и как да избягват капаните.
+          </p>
+          <p class="muted">
+            Това е първата им „малка победа“, която повишава увереността още преди по-сериозната подготовка.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    
+
+    <!-- СЕКЦИЯ 7: FAQ -->
+    <section class="section-white">
+      <h2 class="section-title">Често задавани въпроси</h2>
+      <div class="grid-2-equal" style="margin-top: 28px;">
+        <div class="faq-item">
+          <div class="faq-q">Подходящо ли е за напълно начинаещи?</div>
+          <div class="faq-a">
+            Да — програмата е създадена така, че да въведе учениците плавно в логиката на НВО,
+            без да изисква предварителни знания над училищното ниво.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Подходящо ли е за ученици, които са опитвали, но не са успели?</div>
+          <div class="faq-a">
+            Да — MathBoost дава нов подход, разбираема логика и първи малки победи, които връщат увереността
+            и мотивацията за учене.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Трябва ли предварителна подготовка?</div>
+          <div class="faq-a">
+            Не — достатъчно е ученикът да е от бъдещ седмокласник. Всичко е обяснено стъпка по стъпка.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">На живо ли е събитието?</div>
+          <div class="faq-a">
+            Да, провежда се онлайн в реално време. Така учениците могат да задават въпроси и да участват активно.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Ще има ли запис?</div>
+          <div class="faq-a">
+            Да — участниците получават запис за ограничен период, за да могат да прегледат материала отново.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">Наистина ли е безплатно?</div>
+          <div class="faq-a">
+            Да — целта на MathBoost е да даде уверен старт на всеки ученик, без финансов риск за родителите.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 8: Финален CTA -->
+    <section class="hero" style="padding-top: 70px; padding-bottom: 70px;">
+      <div class="hero-inner cta-final">
+        <h2>Готови ли сте да дадете на детето си уверен старт към НВО?</h2>
+        <p class="cta-final-note">
+          Само 3 дни. Напълно безплатно. С професионална подкрепа.<br />
+          И първи стъпки към по-висок успех по математика.
+        </p>
+		<a href="./zapiswane.html">
+        <button class="btn-primary">Запиши се безплатно</button>
+      </div>
+    </section>
+
+  </div>
+</body>
+</html>
