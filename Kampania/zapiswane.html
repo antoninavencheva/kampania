@@ -1,3 +1,6 @@
+
+zapiswane.html
+
 <!DOCTYPE html>
 <html lang="bg">
 <head>
@@ -124,30 +127,16 @@
 
   <div class="container">
     <h1>Запиши се за MathBoost</h1>
-    <p class="subtitle">Безплатно онлайн събитие за бъдещите седмокласници</p>
+    <p class="subtitle">Безплатно онлайн събитие за ученици от 5.–7. клас</p>
 
     <!-- FORM START -->
+    <form action="YOUR_MAILERLITE_FORM_URL" method="post">
 
-<form action="https://assets.mailerlite.com/jsonp/2248277/forms/184293796676110207/subscribe" method="post">
+      <label for="name">Вашето име</label>
+      <input type="text" id="name" name="name" required>
 
-
-
-
-
-
-	
-
-    <label for="ime_i_familiia">Вашето име</label>
-    <input type="text" id="ime_i_familiia" name="fields[ime_i_familiia]" required>
-
-    <label for="imeil_adres">Имейл адрес</label>
-    <input type="text" id="imeil_adres" name="fields[imeil_adres]" required>
-
-    <button type="submit">Записване</button>
-
-</form>
-
-</form>
+      <label for="email">Имейл адрес</label>
+      <input type="email" id="email" name="email" required>
 
       <!-- Honeypot -->
       <div class="hidden-field">
@@ -178,3 +167,4 @@
 
 </body>
 </html>
+
