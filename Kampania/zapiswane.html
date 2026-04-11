@@ -171,18 +171,18 @@ document.getElementById('my-form').addEventListener('submit', function(e) {
     e.preventDefault(); // Спира стандартното презареждане
 
     const formData = new FormData(this);
-    const url = 'https://assets.mailerlite.com/jsonp/2248277/forms/184021514538976296/subscribe';
-
+    const url = 'https://assets.mailerlite.com/jsonp/2248277/forms/184293796676110207/subscribe';
+	
     fetch(url, {
         method: 'POST',
         body: formData,
     }).then(() => {
         // ТУК СЛОЖИ ЛИНКА КЪМ ТВОЯТА БЛАГОДАРСТВЕНА СТРАНИЦА
-        window.location.href = 'https://potrebitel.github.io/my-site/thanks.html';
+        window.location.href = 'https://antoninavencheva.github.io/kampania/Kampania/blagodarnost.html';
     }).catch(err => {
         console.error('Грешка:', err);
         // Дори при грешка, пак ще пренасочи за всеки случай
-        window.location.href = 'https://potrebitel.github.io/my-site/thanks.html';
+        window.location.href = 'https://antoninavencheva.github.io/kampania/Kampania/blagodarnost.html';
     });
 });
 </script>
